@@ -84,8 +84,8 @@ func handleMSGEvent(event *slack.MessageEvent) {
 }
 
 // Global function for sending replies to user based on RTM NLP characterization
-func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.MessageEntity) {
-	switch entityKey {
+func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optimalEntity wit.MessageEntity) {
+	switch optimalEntityKey {
 	case "greetings":
 		slackClient.PostMessage(
 			event.User,
@@ -93,6 +93,11 @@ func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.Me
 			slack.MsgOptionAsUser(true),
 		)
 		return
+	case "wolfram_search_query":
+		res, err := wolframClient.GetSpokentAnswerQuery(optimalEntity.Value.(string), wolfram.metric, 1000)
+		if err != nil {
+			slackClient.PostMessage()
+		}
 	}
 
 	slackClient.PostMessage(
