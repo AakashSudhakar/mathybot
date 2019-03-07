@@ -1,3 +1,5 @@
+![Go Report Card](https://goreportcard.com/badge/AakashSudhakar/mathybot)
+
 # The Mathy Bot.
 
 ### Created and maintained by Aakash Sudhakar (2019).
