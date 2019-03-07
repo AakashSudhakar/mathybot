@@ -1,6 +1,6 @@
 ![Go Report Card](https://goreportcard.com/badge/AakashSudhakar/wolfybot)
 
-# The Mathy Bot.
+# The Wolfy Bot.
 
 ### Created and maintained by Aakash Sudhakar (2019).
 
