@@ -8,9 +8,10 @@ package main
 
 // Global imports, including Slack and Wolfram API
 import (
-	"os"
+	"fmt" // Permits line printing to console/logs
+	"os"  // Permits OS operations/functionality
 
-	"github.com/nlopes/slack"
+	"github.com/nlopes/slack" // External Slack API
 )
 
 // Initializing the Slack Client API
@@ -30,10 +31,15 @@ func main() {
 	go realTimeMSG.ManageConnection()
 
 	// Check for real-time messages hitting the Slackbot
-	for msg := range realTimeMSG.IncomingEvents() {
+	for msg := range realTimeMSG.IncomingEvents {
 		switch event := msg.Data.(type) {
 		case *slack.MessageEvent:
 			// TODO: Create separate Go Routine to handle Slack messages
 		}
 	}
+}
+
+// Global function for handling real-time messaging events via the Slackbot
+func handleMSGEvent(event *slack.MessageEvent) {
+	fmt.Printf("%v\n", event)
 }
