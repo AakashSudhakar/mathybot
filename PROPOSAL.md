@@ -30,6 +30,7 @@ _The Action Plan_:
 
 _Stretch Goals_:
 
+* ~~Personalize **WolfyBot**'s static message if question is not found in _Wolfram Alpha_'s database.~~
 * Push **WolfyBot** to Heroku or other Cloud Hosting platform.
 * Implement multiple types of response handling. (e.g. Short Answer, Long Answer, etc.)
 * Sanitize user input in Slack and improve with RegEx.

@@ -96,11 +96,19 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 	case "wolfram_search_query":
 		res, err := wolframClient.GetShortAnswerQuery(optimalEntity.Value.(string), wolfram.Metric, 1000)
 		if err == nil {
-			slackClient.PostMessage(
-				event.User,
-				slack.MsgOptionText(res, false),
-				slack.MsgOptionAsUser(true),
-			)
+			if res == "Wolfram|Alpha did not understand your input" {
+				slackClient.PostMessage(
+					event.User,
+					slack.MsgOptionText("Oops, looks like I didn't quite understand that! :-O", false),
+					slack.MsgOptionAsUser(true),
+				)
+			} else {
+				slackClient.PostMessage(
+					event.User,
+					slack.MsgOptionText(res, false),
+					slack.MsgOptionAsUser(true),
+				)
+			}
 			return
 		}
 		log.Printf("ERROR: Unable to retrieve relevant data from the Wolfram database. Error Msg: %v", err)
