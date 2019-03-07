@@ -32,5 +32,8 @@ _Stretch Goals_:
 
 * ~~Personalize **WolfyBot**'s static message if question is not found in _Wolfram Alpha_'s database.~~
 * Push **WolfyBot** to Heroku or other Cloud Hosting platform.
+    - _PENDING_: General Heroku deployment issues.
+* Extend **WolfyBot**'s deployment to Kaffeine (Heroku).
 * Implement multiple types of response handling. (e.g. Short Answer, Long Answer, etc.)
 * Sanitize user input in Slack and improve with RegEx.
+* Extend WolfyBot's functionality to allow custom question-response additions.
