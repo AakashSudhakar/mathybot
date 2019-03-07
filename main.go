@@ -82,7 +82,7 @@ func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.Me
 	case "greetings":
 		slackClient.PostMessage(
 			event.User,
-			slack.MsgOptionText("Hello username!", false),
+			slack.MsgOptionText("Hello! I am WolfBot and I am here to answer your questions.", false),
 			slack.MsgOptionAsUser(true),
 		)
 		return
@@ -90,7 +90,7 @@ func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.Me
 
 	slackClient.PostMessage(
 		event.User,
-		slack.MsgOptionText("WARNING: User not found.", false),
+		slack.MsgOptionText("WARNING: User input is unclear. Try clarifying your question?", false),
 		slack.MsgOptionAsUser(true),
 	)
 }
