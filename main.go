@@ -89,7 +89,7 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 	case "greetings":
 		slackClient.PostMessage(
 			event.User,
-			slack.MsgOptionText("Hello! I am WolfBot and I am here to answer your questions. :-)", false),
+			slack.MsgOptionText("Hello! I am WolfyBot and I am here to answer your questions. :-)", false),
 			slack.MsgOptionAsUser(true),
 		)
 		return
@@ -100,6 +100,12 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 				slackClient.PostMessage(
 					event.User,
 					slack.MsgOptionText("Oops, looks like I didn't quite understand that! :-O", false),
+					slack.MsgOptionAsUser(true),
+				)
+			} else if res == "No short answer available" {
+				slackClient.PostMessage(
+					event.User,
+					slack.MsgOptionText("Whoops! I'm still learning the ropes and while I got your answer, it's a little long for me to communicate. :-P", false),
 					slack.MsgOptionAsUser(true),
 				)
 			} else {
