@@ -80,15 +80,17 @@ func handleMSGEvent(event *slack.MessageEvent) {
 func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.MessageEntity) {
 	switch entityKey {
 	case "greetings":
-		// TODO: Resolve issue with Slack MsgOptions object versus string object types
-		slackClient.PostMessage(event.User, "Hello username!", slack.PostMessageParameters{
-			AsUser: true,
-		})
+		slackClient.PostMessage(
+			event.User,
+			slack.MsgOptionText("Hello username!", false),
+			slack.MsgOptionAsUser(true),
+		)
 		return
 	}
 
-	// TODO: Resolve issue with Slack MsgOptions object versus string object types
-	slackClient.PostMessage(event.User, "WARNING: User not found.", slack.PostMessageParameters{
-		AsUser: true,
-	})
+	slackClient.PostMessage(
+		event.User,
+		slack.MsgOptionText("WARNING: User not found.", false),
+		slack.MsgOptionAsUser(true),
+	)
 }
