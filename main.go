@@ -8,17 +8,19 @@ package main
 
 // Global imports, including Slack and Wolfram API
 import (
-	"log"
-	"os" // Permits OS operations/functionality
+	"log" // Permits console logging
+	"os"  // Permits OS operations/functionality
 
-	wit "github.com/christianrondeau/go-wit"
-	"github.com/nlopes/slack" // External Slack API
+	wit "github.com/christianrondeau/go-wit" // External Wit.ai API
+	"github.com/nlopes/slack"                // External Slack API
+	// External Wolfram API
 )
 
 // Initializing the client APIs
 var (
-	slackClient *slack.Client
-	witClient   *wit.Client
+	slackClient   *slack.Client
+	witClient     *wit.Client
+	wolframClient *wolfram.Client
 )
 
 // Main run function
@@ -26,6 +28,7 @@ func main() {
 	// Setting our client APIs to communicate across Make School's Slack
 	slackClient = slack.New(os.Getenv("SLACK_ACCESS_TOKEN"))
 	witClient = wit.NewClient(os.Getenv("WIT_AI_ACCESS_TOKEN"))
+	wolframClient = &wolfram.Client{AppID: os.Getenv("WOLFRAM_APP_ID")}
 
 	// Instantiating real-time messaging with our Slackbot
 	realTimeMSG := slackClient.NewRTM()
