@@ -89,20 +89,26 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 	case "greetings":
 		slackClient.PostMessage(
 			event.User,
-			slack.MsgOptionText("Hello! I am WolfBot and I am here to answer your questions.", false),
+			slack.MsgOptionText("Hello! I am WolfBot and I am here to answer your questions. :-)", false),
 			slack.MsgOptionAsUser(true),
 		)
 		return
 	case "wolfram_search_query":
 		res, err := wolframClient.GetSpokentAnswerQuery(optimalEntity.Value.(string), wolfram.metric, 1000)
 		if err != nil {
-			slackClient.PostMessage()
+			slackClient.PostMessage(
+				event.User,
+				res,
+				slack.MsgOptionAsUser(true),
+			)
+			return
 		}
+		log.Printf("ERROR: Unable to retrieve relevant data from the Wolfram database. Error Msg: %v", err)
 	}
 
 	slackClient.PostMessage(
 		event.User,
-		slack.MsgOptionText("WARNING: User input is unclear. Try clarifying your question?", false),
+		slack.MsgOptionText("WARNING: User input is unclear. :-/ Try clarifying your question?", false),
 		slack.MsgOptionAsUser(true),
 	)
 }
