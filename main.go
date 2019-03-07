@@ -11,9 +11,9 @@ import (
 	"log" // Permits console logging
 	"os"  // Permits OS operations/functionality
 
+	wolfram "github.com/Krognol/go-wolfram"  // External Wolfram API
 	wit "github.com/christianrondeau/go-wit" // External Wit.ai API
-	"github.com/nlopes/slack"                // External Slack API
-	// External Wolfram API
+	slack "github.com/nlopes/slack"          // External Slack API
 )
 
 // Global constant holding message entity ideal confidence threshold
@@ -98,7 +98,7 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 		if err != nil {
 			slackClient.PostMessage(
 				event.User,
-				res,
+				slack.MsgOptionText(res, false),
 				slack.MsgOptionAsUser(true),
 			)
 			return
