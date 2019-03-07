@@ -95,7 +95,7 @@ func sendUserResponse(event *slack.MessageEvent, optimalEntityKey string, optima
 		return
 	case "wolfram_search_query":
 		res, err := wolframClient.GetShortAnswerQuery(optimalEntity.Value.(string), wolfram.Metric, 1000)
-		if err != nil {
+		if err == nil {
 			slackClient.PostMessage(
 				event.User,
 				slack.MsgOptionText(res, false),
