@@ -24,9 +24,8 @@ _The Action Plan_:
 * ~~Connect **WolfyBot** to the _Wit.ai_ API.~~
 * ~~Break down user questions into tokens based on relevance.~~
 * ~~Set confidence level to prioritize most relevant tokens for question responsivity.~~
-* Connect **WolfyBot** to the _Wolfram Alpha_ API.
-    - _BLOCKED_: API is unresponsive to any requests.
+* ~~Connect **WolfyBot** to the _Wolfram Alpha_ API.~~
 * Send tokenized user question to the _Wolfram Alpha_ database.
-    - _BLOCKED_: Cannot test DB access without API response(s).
+    - _BLOCKED_: API response fails and error is ambiguous.
 * Grab relevant responses and return to user.
-    - _BLOCKED_: Cannot test response relevance without API response(s).
+    - _BLOCKED_: API response fails and error is ambiguous.
