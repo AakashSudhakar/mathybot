@@ -1,3 +1,5 @@
+![Latest Commit](https://img.shields.io/github/last-commit/AakashSudhakar/wolfybot.svg?style=flat)
+![Repository Size](https://img.shields.io/github/repo-size/AakashSudhakar/wolfybot.svg?style=flat)
 ![Go Report Card](https://goreportcard.com/badge/AakashSudhakar/wolfybot)
 
 # The Wolfy Bot.
