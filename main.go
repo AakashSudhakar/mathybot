@@ -55,16 +55,17 @@ func handleMSGEvent(event *slack.MessageEvent) {
 		return
 	}
 
-	// Initializing variable to point to ideal message characteristic entity for NLP
+	// Initializing variables to hold ideal message characteristic entity for NLP
 	var (
-		optimalEntityKey string
-		optimalEntity    wit.MessageEntity
+		optimalEntityConfidenceThreshold = 0.5
+		optimalEntityKey                 string
+		optimalEntity                    wit.MessageEntity
 	)
 
 	// Mapping over all message entities to grab ideal entity for NLP based on highest confidence
 	for entityKey, entityValueMap := range res.Entities {
 		for _, entity := range entityValueMap {
-			if entity.Confidence > optimalEntity.Confidence {
+			if (entity.Confidence > optimalEntityConfidenceThreshold) && (entity.Confidence > optimalEntity.Confidence) {
 				optimalEntityKey = entityKey
 				optimalEntity = entity
 			}
