@@ -28,7 +28,7 @@ _The Action Plan_:
 * ~~Send tokenized user question to the _Wolfram Alpha_ database.~~
 * ~~Grab relevant responses and return to user.~~
 
-_Stretch Goals_:
+_Further Development Challenges_:
 
 * ~~Personalize **WolfyBot**'s static message if question is not found in _Wolfram Alpha_'s database.~~
 * Push **WolfyBot** to Heroku or other Cloud Hosting platform.
@@ -36,4 +36,6 @@ _Stretch Goals_:
 * Extend **WolfyBot**'s deployment to Kaffeine (Heroku).
 * Implement multiple types of response handling. (e.g. Short Answer, Long Answer, etc.)
 * Sanitize user input in Slack and improve with RegEx.
-* Extend WolfyBot's functionality to allow custom question-response additions.
+* Extend **WolfyBot**'s functionality to allow custom question-response additions.
+* Convert two major helper functions in `main.go` to concern-separated modules.
+* Tutorialize command-line initialization of **WolfyBot** setup in `README.md`. 
