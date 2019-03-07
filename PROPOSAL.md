@@ -25,7 +25,11 @@ _The Action Plan_:
 * ~~Break down user questions into tokens based on relevance.~~
 * ~~Set confidence level to prioritize most relevant tokens for question responsivity.~~
 * ~~Connect **WolfyBot** to the _Wolfram Alpha_ API.~~
-* Send tokenized user question to the _Wolfram Alpha_ database.
-    - _BLOCKED_: API response fails and error is ambiguous.
-* Grab relevant responses and return to user.
-    - _BLOCKED_: API response fails and error is ambiguous.
+* ~~Send tokenized user question to the _Wolfram Alpha_ database.~~
+* ~~Grab relevant responses and return to user.~~
+
+_Stretch Goals_:
+
+* Push **WolfyBot** to Heroku or other Cloud Hosting platform.
+* Implement multiple types of response handling. (e.g. Short Answer, Long Answer, etc.)
+* Sanitize user input in Slack and improve with RegEx.
