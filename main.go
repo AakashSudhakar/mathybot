@@ -16,6 +16,9 @@ import (
 	// External Wolfram API
 )
 
+// Global constant holding message entity ideal confidence threshold
+const optimalEntityConfidenceThreshold = 0.5
+
 // Initializing the client APIs
 var (
 	slackClient   *slack.Client
@@ -40,8 +43,10 @@ func main() {
 	for msg := range realTimeMSG.IncomingEvents {
 		switch event := msg.Data.(type) {
 		case *slack.MessageEvent:
-			// Handling real-time messaging event via Go Routine
-			go handleMSGEvent(event)
+			if len(event.BotID) == 0 {
+				// Handling real-time messaging event via Go Routine
+				go handleMSGEvent(event)
+			}
 		}
 	}
 }
@@ -60,9 +65,8 @@ func handleMSGEvent(event *slack.MessageEvent) {
 
 	// Initializing variables to hold ideal message characteristic entity for NLP
 	var (
-		optimalEntityConfidenceThreshold = 0.5
-		optimalEntityKey                 string
-		optimalEntity                    wit.MessageEntity
+		optimalEntityKey string
+		optimalEntity    wit.MessageEntity
 	)
 
 	// Mapping over all message entities to grab ideal entity for NLP based on highest confidence
