@@ -13,7 +13,11 @@ import (
 	"github.com/nlopes/slack"
 )
 
+var (
+	slackClient *slack.Client
+)
+
 // Main run function
 func main() {
-	slackClient := slack.New(os.Getenv("SLACK_ACCESS_TOKEN"))
+	slackClient = slack.New(os.Getenv("SLACK_ACCESS_TOKEN"))
 }
