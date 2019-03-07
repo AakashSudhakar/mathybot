@@ -71,4 +71,24 @@ func handleMSGEvent(event *slack.MessageEvent) {
 			}
 		}
 	}
+
+	// Responding to user based on characterized ideal MSG entity
+	sendUserResponse(event, optimalEntityKey, optimalEntity)
+}
+
+// Global function for sending replies to user based on RTM NLP characterization
+func sendUserResponse(event *slack.MessageEvent, entityKey string, entity wit.MessageEntity) {
+	switch entityKey {
+	case "greetings":
+		// TODO: Resolve issue with Slack MsgOptions object versus string object types
+		slackClient.PostMessage(event.User, "Hello username!", slack.PostMessageParameters{
+			AsUser: true,
+		})
+		return
+	}
+
+	// TODO: Resolve issue with Slack MsgOptions object versus string object types
+	slackClient.PostMessage(event.User, "WARNING: User not found.", slack.PostMessageParameters{
+		AsUser: true,
+	})
 }
